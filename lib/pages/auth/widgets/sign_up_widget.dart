@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/register/register_bloc.dart';
 import '../../../data/datasources/auth_local_datasource.dart';
-import '../../../data/models/request/register_request_model.dart';
+import '../../../data/models/requests/register_request_model.dart';
 import '../../../utils/color_resources.dart';
 import '../../../utils/custom_themes.dart';
 import '../../../utils/dimensions.dart';

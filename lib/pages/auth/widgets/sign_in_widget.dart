@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utansa_app/bloc/login/login_bloc.dart';
 import 'package:utansa_app/data/datasources/auth_local_datasource.dart';
-import 'package:utansa_app/data/models/request/login_request_model.dart';
+import 'package:utansa_app/data/models/requests/login_request_model.dart';
 
 import '../../../utils/color_resources.dart';
 import '../../../utils/custom_themes.dart';

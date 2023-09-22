@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:utansa_app/pages/home_page/home_page.dart';
 
-import '../../bloc/logout/logout_bloc.dart';
-import '../../data/datasources/auth_local_datasource.dart';
 import '../../utils/images.dart';
-import '../auth/auth_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _HomePageState();
+  State<DashboardPage> createState() => _DashboardState();
 }
 
-class _HomePageState extends State<DashboardPage> {
+class _DashboardState extends State<DashboardPage> {
   final PageController _pageController = PageController();
   int _pageIndex = 0;
   late List<Widget> _screens;
@@ -24,62 +21,12 @@ class _HomePageState extends State<DashboardPage> {
   String token = '';
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-
-    final token = await AuthLocalDatasource().isLogin();
-
     _screens = [
-      token
-          ? const Center(
-              child: Text('Home'),
-            )
-          : Center(
-              child: BlocConsumer<LogoutBloc, LogoutState>(
-                listener: (context, state) {
-                  state.maybeWhen(
-                      orElse: () {},
-                      loaded: (message) {
-                        AuthLocalDatasource().removeAuthData();
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AuthPage(),
-                            ),
-                            (route) => false);
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text('Login Successfully'),
-                          backgroundColor: Colors.green,
-                        ));
-                      },
-                      error: (message) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(message),
-                          backgroundColor: Colors.green,
-                        ));
-                      });
-                },
-                builder: (context, state) {
-                  return state.maybeWhen(orElse: () {
-                    return ElevatedButton(
-                      onPressed: () {
-                        context
-                            .read<LogoutBloc>()
-                            .add(const LogoutEvent.logout());
-                      },
-                      child: const Text('Logout 1'),
-                    );
-                  }, loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  });
-                },
-              ),
-            ),
+      HomePage(),
       const Center(
-        child: Text('Home'),
+        child: Text('Pays'),
       ),
       const Center(
         child: Text('Order'),

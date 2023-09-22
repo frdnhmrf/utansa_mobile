@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:utansa_app/data/datasources/auth_remote_datasource.dart';
 
 import '../../data/models/auth_response_model.dart';
-import '../../data/models/request/login_request_model.dart';
+import '../../data/models/requests/login_request_model.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

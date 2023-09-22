@@ -4,8 +4,8 @@ import 'package:utansa_app/data/datasources/auth_local_datasource.dart';
 
 import '../../common/global_variables.dart';
 import '../models/auth_response_model.dart';
-import '../models/request/login_request_model.dart';
-import '../models/request/register_request_model.dart';
+import '../models/requests/login_request_model.dart';
+import '../models/requests/register_request_model.dart';
 
 class AuthRemoteDatasource {
   Future<Either<String, AuthResponseModel>> register(
